@@ -19,7 +19,7 @@ class BinarySearchTree{
     }
     if(!this.right)
       return this.right = new BinarySearchTree(value);
-    return this.right.insert(value); 
+    return this.right.insert(value);
   }
   find(value){
     if(value=== this.value)
@@ -74,7 +74,7 @@ class BinarySearchTree{
   remove(value){
     let node = this.find(value);
     if(!node){
-      throw new TypeError('Binary Search Tree - value to delete not found in tree');
+      return null;
     }
     if(node.left && node.right){
       let min = node.right.findMin();

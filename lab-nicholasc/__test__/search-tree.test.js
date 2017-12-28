@@ -25,7 +25,7 @@ describe('/lib/search-tree', () => {
     test('remove from null', () => {
       let nullBST = new BST(9);
       nullBST.value = null;
-      expect(nullBST.remove(9)).toThrow();
+      expect(nullBST.remove(9)).toEqual(null);
     });
 
   });
