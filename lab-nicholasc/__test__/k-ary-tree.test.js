@@ -1,26 +1,38 @@
 'use strict';
 
-const BST = require('../lib/search-tree');
+const KAryTree = require('../lib/k-ary-tree');
 
 
-describe('/lib/search-tree', () => {
+describe('/lib/K-ary-tree', () => {
 
+  let mockKary = new KAryTree(1);
+  let two = new KAryTree(2);
+  let three = new KAryTree(3);
+  let four = new KAryTree(4);
+  let five = new KAryTree(5);
+  let six = new KAryTree(6);
+  let seven = new KAryTree(7);
+  let eight = new KAryTree(8);
 
+  mockKary.appendChild(two);
+  mockKary.appendChild(three);
+  mockKary.appendChild(four);
+  three.appendChild(five);
+  three.appendChild(six);
+  three.appendChild(seven);
+  six.appendChild(eight);
 
-  let notATree = new BST(10);
+  console.log(mockKary.toString());
+  console.log(mockKary.toArray());
+
+  let notATree = new KAryTree(10);
   notATree.value = null;
 
-  describe('Binary Seatch Tree', () => {
-    test('remove', () => {
-      let mockBST = new BST(9);
-      mockBST.insert(8);
-      mockBST.insert(10);
-      mockBST.insert(12);
-      mockBST.insert(11);
-      mockBST.insert(15);
-      expect(mockBST.toString()).toEqual(' 8  9  10  11  12  15 ');
-      mockBST.remove(12);
-      expect(mockBST.toString()).toEqual(' 8  9  10  11  15 ');
+  describe('K-Ary Tree', () => {
+    test('toArray', () => {
+      expect(mockKary.toArray()).toEqual(' 8  9  10  11  12  15 ');
+      mockKary.remove(12);
+      expect(mockKary.toString()).toEqual(' 8  9  10  11  15 ');
     });
 
   });
