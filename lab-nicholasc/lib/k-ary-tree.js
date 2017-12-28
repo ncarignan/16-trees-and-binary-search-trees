@@ -44,6 +44,8 @@ class KAryTree{
   }
 
   _toString(node) {
+    if(!node.value)
+      return null;
     let str = '';
     let queue = new Queue;
     queue.enqueue(node);
