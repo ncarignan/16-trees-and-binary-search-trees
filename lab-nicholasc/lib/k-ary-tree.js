@@ -72,6 +72,8 @@ class KAryTree{
   }
 }
 
+module.exports = KAryTree;
+
 //-----------------------------------
 //EXAMPLE K-ARY SETUP
 //----------------------------
