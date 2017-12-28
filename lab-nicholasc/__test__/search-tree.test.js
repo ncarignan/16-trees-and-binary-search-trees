@@ -22,6 +22,11 @@ describe('/lib/search-tree', () => {
       mockBST.remove(12);
       expect(mockBST.toString()).toEqual(' 8  9  10  11  15 ');
     });
+    test('remove from null', () => {
+      let nullBST = new BST(9);
+      nullBST.value = null;
+      expect(nullBST.remove(9)).toThrow();
+    });
 
   });
 });
