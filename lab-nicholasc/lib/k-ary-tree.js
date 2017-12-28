@@ -20,24 +20,42 @@ class KAryTree{
     return this._toArray(this, []);
   }
 
-  _toArray(node, arr) {
-    if(!arr)
-      arr = [];
+  _toArray(node) {
+    let arr = [];
     let stack = new Stack;
     stack.push(node);
-    // let arr = [];
 
     while(stack.getLength() > 0){
       let toPush = null;
       toPush = stack.pop();
-      // console.log(toPush);
       arr.push(toPush.value);
 
       for(let child of toPush._children)
         stack.push(child);
 
-    } 
+    }
     return arr;
+  }
+
+  toString() {
+    return this._toString(this);
+  }
+
+  _toString(node) {
+    let str = '';
+    let queue = new Queue;
+    queue.enqueue(node);
+    let toQueue = null;
+
+    while(queue.getLength() > 0){
+      toQueue = queue.dequeue();
+      str.push(toQueue.value);
+
+      for(let child of toQueue._children)
+        queue.enqueue(child);
+
+    }
+    return str;
   }
 
   breathFirstSearch(){
