@@ -29,11 +29,17 @@ describe('/lib/K-ary-tree', () => {
   notATree.value = null;
 
   describe('K-Ary Tree', () => {
-    test('toArray', () => {
-      expect(mockKary.toArray()).toEqual(' 8  9  10  11  12  15 ');
-      mockKary.remove(12);
-      expect(mockKary.toString()).toEqual(' 8  9  10  11  15 ');
+    describe('toArray', () => {
+      test('standard tree', () => {
+        expect(mockKary.toArray()).toEqual([ 1, 4, 3, 7, 6, 8, 5, 2 ]);
+      });
+      test('bad tree', () => {
+        expect(notATree.toArray()).toEqual(null);
+      });
     });
+
+
+
 
   });
 });
