@@ -62,17 +62,18 @@ class KAryTree{
     return str;
   }
 
-  breathFirstSearch(){
+  breathFirstSearch(value){
     let queue = new Queue();
     queue.enqueue(this);
     let current = null;
     while(queue.getLength() > 0){
       current = queue.dequeue();
-      console.log(`visiting ${current.value}`);
-
+      if(current.value === value)
+        return current;
       for(let child of current._children)
         queue.enqueue(child);
     }
+    return null;
   }
 }
 

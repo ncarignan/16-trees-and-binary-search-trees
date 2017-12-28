@@ -45,6 +45,14 @@ describe('/lib/K-ary-tree', () => {
         expect(notATree.toString()).toEqual(null);
       });
     });
+    describe('breathFirstSearch', () => {
+      test('standard tree', () => {
+        expect(mockKary.breathFirstSearch(6)).toEqual(six);
+      });
+      test('bad tree', () => {
+        expect(notATree.breathFirstSearch(20)).toEqual(null);
+      });
+    });
 
 
 
