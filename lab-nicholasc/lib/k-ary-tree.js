@@ -34,7 +34,7 @@ class KAryTree{
       arr.push(toPush.value);
 
       for(let child of toPush._children)
-        this._toArray(child);
+        stack.push(child);
 
     }
     return arr;
