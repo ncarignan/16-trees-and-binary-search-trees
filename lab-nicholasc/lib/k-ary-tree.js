@@ -49,7 +49,7 @@ class KAryTree{
 
     while(queue.getLength() > 0){
       toQueue = queue.dequeue();
-      str.push(toQueue.value);
+      str = `${str}\n${toQueue.value}`;
 
       for(let child of toQueue._children)
         queue.enqueue(child);
@@ -72,6 +72,9 @@ class KAryTree{
   }
 }
 
+//-----------------------------------
+//EXAMPLE K-ARY SETUP
+//----------------------------
 let one = new KAryTree(1);
 let two = new KAryTree(2);
 let three = new KAryTree(3);
@@ -89,4 +92,4 @@ three.appendChild(six);
 three.appendChild(seven);
 six.appendChild(eight);
 
-console.log(one.toArray());
+console.log(one.toString());
