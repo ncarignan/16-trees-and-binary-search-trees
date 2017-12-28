@@ -37,6 +37,14 @@ describe('/lib/K-ary-tree', () => {
         expect(notATree.toArray()).toEqual(null);
       });
     });
+    describe('toString', () => {
+      test('standard tree', () => {
+        expect(mockKary.toString()).toEqual('\n1\n2\n3\n4\n5\n6\n7\n8');
+      });
+      test('bad tree', () => {
+        expect(notATree.toString()).toEqual(null);
+      });
+    });
 
 
 

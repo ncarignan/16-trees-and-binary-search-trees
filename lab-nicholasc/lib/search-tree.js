@@ -19,7 +19,7 @@ class BinarySearchTree{
     }
     if(!this.right)
       return this.right = new BinarySearchTree(value);
-    return this.right.insert(value); // nicholas- putting this return here gives better callstack optimization but some people may assume i am trying to return a value? We learned it this way in 301 though so i am leaving it
+    return this.right.insert(value); 
   }
   find(value){
     if(value=== this.value)
@@ -78,7 +78,6 @@ class BinarySearchTree{
     }
     if(node.left && node.right){
       let min = node.right.findMin();
-      console.log('min.value :', min.value);
       this.remove(min.value);
       return node.value = min.value;
     }

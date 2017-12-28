@@ -21,6 +21,8 @@ class KAryTree{
   }
 
   _toArray(node) {
+    if(!node.value)
+      return null;
     let arr = [];
     let stack = new Stack;
     stack.push(node);
