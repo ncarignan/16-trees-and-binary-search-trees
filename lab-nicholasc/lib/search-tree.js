@@ -38,10 +38,12 @@ class BinarySearchTree{
   }
 
   findParent(value){
-    if(this.left.value === value)
-      return this;
-    if(this.right.value === value)
-      return this;
+    if(this.left)
+      if(this.left.value === value)
+        return this;
+    if(this.right)
+      if(this.right.value === value)
+        return this;
     if(value > this.value) {
       if(this.right !==null)
         return this.right.findParent(value);
@@ -58,12 +60,19 @@ class BinarySearchTree{
       return this.left.findMin();
     return this;
   }
+  toString() {
+    return this._toString(this);
+  }
+
+  _toString(node) {
+    if(!node)
+      return '';
+    return `${this._toString(node.left)} ${node.value} ${this._toString(node.right)}`;
+  }
+
 
   remove(value){
-    console.log('starting remove');
     let node = this.find(value);
-    console.log('this value is', this.value);
-    console.log('node value is', node.value);
     if(!node){
       throw new TypeError('Binary Search Tree - value to delete not found in tree');
     }
@@ -86,21 +95,13 @@ class BinarySearchTree{
         return parentNode.left = node.right;
       return parentNode.right = node.left;
     }
+    if(!node.left && !node.right){
+      let parent = this.findParent(value);
+      if(parent.left.value === value)
+        parent.left = null;
+      if(parent.right.value === value)
+        parent.right = null;
+    }
   }
 
 }
-
-let x = new BinarySearchTree(9);
-x.insert(8);
-x.insert(10);
-x.insert(12);
-x.insert(11);
-x.insert(15);
-x.insert(7);
-x.insert(6);
-x.insert(4);
-x.insert(5);
-
-console.log(x.find(12));
-x.remove(12);
-console.log(x.find(12));

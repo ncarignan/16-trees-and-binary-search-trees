@@ -1,5 +1,7 @@
 'use strict';
 
+
+const Stack = require('./stack');
 const Queue = require('./queue');
 
 class KAryTree{
@@ -12,6 +14,30 @@ class KAryTree{
     if(!(tree instanceof KAryTree))
       throw new TypeError('must insert a k-ary tree');
     this._children.push(tree);
+  }
+
+  toArray() {
+    return this._toArray(this, []);
+  }
+
+  _toArray(node, arr) {
+    if(!arr)
+      arr = [];
+    let stack = new Stack;
+    stack.push(node);
+    // let arr = [];
+
+    while(stack.getLength() > 0){
+      let toPush = null;
+      toPush = stack.pop();
+      // console.log(toPush);
+      arr.push(toPush.value);
+
+      for(let child of toPush._children)
+        this._toArray(child);
+
+    }
+    return arr;
   }
 
   breathFirstSearch(){
@@ -44,3 +70,5 @@ three.appendChild(five);
 three.appendChild(six);
 three.appendChild(seven);
 six.appendChild(eight);
+
+console.log(one.toArray());
