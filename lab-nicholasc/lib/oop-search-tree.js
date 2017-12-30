@@ -1,10 +1,16 @@
 'use strict';
 
-class BinarySearchTree{
+class BSTNode{
   constructor(value){
     this.value = value;
     this.left = null;
     this.right = null;
+  }
+}
+
+class BinarySearchTree{
+  constructor(value){
+    this.root = new BSTNode(value);
   }
   insert(value){
     if(typeof value !== 'number')
@@ -72,16 +78,14 @@ class BinarySearchTree{
 
 
   remove(value){
-
-
     let node = this.find(value);
     if(!node){
       return null;
     }
     if(node.left && node.right){
       let min = node.right.findMin();
-      this.remove(min.value);
-      return node.value = min.value;
+      this.value = min.value;
+      return this.remove(min.value);
     }
 
     if(node.left){
@@ -104,7 +108,16 @@ class BinarySearchTree{
         parent.right = null;
     }
   }
+  _remove(node, value){
 
+    //finds a node with 2 children
+    let tempResult = node.value;
+    let temp = this.findMin(node.right);
+    node.value = temp.value;
+    node.right = removeNode(node.right, temp.value);
+    result = tempResult;
+    return node;
+  }
 }
 
 module.exports = BinarySearchTree;

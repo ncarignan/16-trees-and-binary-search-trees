@@ -27,6 +27,28 @@ describe('/lib/search-tree', () => {
       nullBST.value = null;
       expect(nullBST.remove(9)).toEqual(null);
     });
+    //TODO: remove specific things
+    test('remove head', () => {
+
+    });
+
+    test('remove right leaf', () => {
+
+    });
+
+    test('remove node with left and right', () => {
+
+    });
+    test('remove should not be unintentionally destructive', () => {
+      let testTree = new BST(10);
+      testTree.insert(8);
+      testTree.insert(12);
+      testTree.insert(19);
+      testTree.remove(10);
+      expect(testTree.value).toEqual(12);
+      console.log(testTree.toString());
+      expect(testTree.right.value).toEqual(19);
+    });
 
   });
 });
