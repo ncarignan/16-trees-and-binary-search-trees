@@ -8,6 +8,7 @@ The resulting BST will be a node with a value and a left and a right property th
 ### Methods
 #### Insert
 The insert method takes in a value and appends a node with that value to the appropriate place in the tree. it can be called on an existing tree as follows: `BST.insert(<value>)`. The tree inserts lower values to the left and larger values to the right of a node. The O(n) of this operation is lg(n) where n is the amount of nodes in a tree.
+
 #### Find
 The find method takes in a value and locates a node with that value in the tree. it can be called on an existing tree as follows: `BST.find(<value>)`. The method traverses the tree in preOrder and returns the node with the value you are searching for. The O(n) of this operation is lg(n) where n is the amount of nodes in a tree.
 
@@ -19,7 +20,8 @@ the findMin method finds the leftmost leaf of a node. it can be called as follow
 
 #### remove
 The remove method takes in a value and locates a node that has that value in the tree and removes it. it can be called on an existing tree as follows: `BST.remove(<value>)`. The method traverses the tree in preOrder using the find() function then removes the node found. If the node has a left or right, the function appropriately restructures the tree. The O(n) of this operation is lg(n) where n is the amount of nodes in a tree. It should be noted that the remove function calls itself in some cases which can increase the o(n) time.
-
+### Memory O(n)
+in all of these methods, the tree and the reference both have to be stored but none of the methods store copies of the full tree twice so the memory is n(log(n)) where n is the size of the tree and log(n) represents the size of the reference
 ### Testing
 to test the functions, make sure you have jest installed by running in the CLI `npm install`. Then call `npm test` and the tests will run. The tests run the methods above on several cases.
 
@@ -37,3 +39,7 @@ the appendChild method takes in a KAryTree and appends it as a child to the tree
 this method takes all the values in a KAryTree and pushes them to an array. it can be accessed as follows `tree.toArray()`; It uses the helper function \_toArray and uses a stack to push all the values into the array. It has an O(n) of n because it hits every node once.
 #### toString
 this method takes all the values in a KAryTree and concatenates them in a string. it can be accessed as follows `tree.toString()`; It uses the helper function \_toString and uses a queue to push all the values into the string. It has an O(n) of n because it hits every node once.
+### Memory O(n)
+in all of these methods, the tree and the reference both have to be stored but none of the methods store copies of the full tree twice so the memory is n(log(n)) where n is the size of the tree and log(n) represents the size of the reference. To note, the memory requirement is larger because of the manual stacks and queues but it is similar to a binary search tree still in terms of memory.
+### Testing
+to test the functions, make sure you have jest installed by running in the CLI `npm install`. Then call `npm test` and the tests will run. The tests run the methods above on several cases.
