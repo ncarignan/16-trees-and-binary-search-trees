@@ -10,7 +10,7 @@ describe('/lib/search-tree', () => {
   let notATree = new BST(10);
   notATree.value = null;
 
-  describe('Binary Seatch Tree', () => {
+  describe('Binary Search Tree', () => {
     test('remove', () => {
       let mockBST = new BST(9);
       mockBST.insert(8);
@@ -29,26 +29,31 @@ describe('/lib/search-tree', () => {
     });
     //TODO: remove specific things
     test('remove head', () => {
-
+      let headTree = new BST(10);
+      headTree.insert(8);
+      headTree.insert(12);
+      headTree.insert(11);
+      headTree.insert(15);
     });
 
     test('remove right leaf', () => {
-
+      let rightTree = new BST(10);
+      rightTree.insert(8);
+      rightTree.insert(12);
+      expect(rightTree.right.value).toEqual(12);
+      rightTree.remove(12);
+      expect(rightTree.right).toEqual(null);
     });
 
     test('remove node with left and right', () => {
-
-    });
-    test('remove should not be unintentionally destructive', () => {
       let testTree = new BST(10);
       testTree.insert(8);
       testTree.insert(12);
-      testTree.insert(19);
-      testTree.remove(10);
-      expect(testTree.value).toEqual(12);
-      console.log(testTree.toString());
-      expect(testTree.right.value).toEqual(19);
+      testTree.insert(11);
+      testTree.insert(15);
+      expect(testTree.right.value).toEqual(12);
+      testTree.remove(12);
+      expect(testTree.right.value).toEqual(15);
     });
-
   });
 });

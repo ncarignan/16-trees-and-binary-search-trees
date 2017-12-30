@@ -70,18 +70,18 @@ class BinarySearchTree{
     return `${this._toString(node.left)} ${node.value} ${this._toString(node.right)}`;
   }
 
-
   remove(value){
-
-
     let node = this.find(value);
     if(!node){
       return null;
     }
+
     if(node.left && node.right){
       let min = node.right.findMin();
+      let temp = min.value;
       this.remove(min.value);
-      return node.value = min.value;
+      node.value = temp;
+      return;
     }
 
     if(node.left){

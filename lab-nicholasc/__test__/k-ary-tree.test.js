@@ -22,8 +22,6 @@ describe('/lib/K-ary-tree', () => {
   three.appendChild(seven);
   six.appendChild(eight);
 
-  console.log(mockKary.toString());
-  console.log(mockKary.toArray());
 
   let notATree = new KAryTree(10);
   notATree.value = null;
